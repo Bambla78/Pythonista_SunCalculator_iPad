@@ -43,7 +43,7 @@ slidertest.txt —> slidertest.pyui
 FreeMono.txt —> FreeMono.ttf
 
 9. Now you should be ready to go:
-Launch suncalc.pyui in your iPad and explore!
+Launch suncalc.py in your iPad and explore!
 
 
 
