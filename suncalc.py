@@ -637,15 +637,13 @@ def checkdststatus():
 	selected_year = a3
 	zeitwert = getzeitwert(selected_year)
 
-	if zeitwert == [] or len(zeitwert) == 1:
+	if len(zeitwert) < 2:
 		zeitwert = getzeitwert(2020)
 		
 		try:
 			d0 = (zeitwert[0].weekday())
 		except:
-			print()
-			print('Standard time is used throughout whole year.')
-			print()
+			print('\nStandard time is used throughout whole year.\n')
 			return
 			
 		d1 = (zeitwert[1].weekday())
@@ -3426,44 +3424,49 @@ mainprogram()
 while reset == 1:
 	mainprogram()
 
-while 1 == 1:
-	
+prompt = """PLEASE INPUT ON KEYBOARD:
+
+1.	Save report
+2.	Open recent report PDF
+3.	Save location
+4.	Sun hour calculator
+5.	Seasons and DST switch time
+6.	Choose new location
+7.	Quit
+""" + '\n '
+while True:
+
 	while reset == 1:
 		mainprogram()
-		
-	choice = input('PLEASE INPUT ON KEYBOARD:\n\n1.	Save report\n2.	Open recent report PDF\n3.	Save location\n4.	Sun hour calculator\n5.	Seasons and DST switch time\n6.	Choose new location\n7.	Quit\n\n ')
-	
-	while choice != '1' and choice != '2' and choice != '3' and choice != '4' and choice != '5' and choice != '6' and choice != '7':
-		print()
-		print('Invalid input.')
-		print()
-		choice = input('PLEASE INPUT ON KEYBOARD:\n\n1.	Save report\n2.	Open recent report PDF\n3.	Save location\n4.	Sun hour calculator\n5.	Seasons and DST switch time\n6.	Choose new location\n7.	Quit\n\n ')
-		
+
+	choice = input(prompt)
+	while choice not in ('1', '2', '3', '4', '5', '6', '7'):
+		print('\nInvalid input.\n')
+		choice = input(prompt)
+
 	if choice  == '1':
 		savereport()	
 		print()
-		
+
 	if choice == '2':
 		my_file = Path("Sunreport.pdf")
 		if my_file.is_file():
-			f = 'Sunreport.pdf'
-			outfile_path = os.path.abspath(f)
+			outfile_path = os.path.abspath(my_file.stem)
 			console.quicklook(outfile_path)
 		else:
 			dialogs.hud_alert('No report PDF available.', 'error', 1.8)
 		print()
-		
+
 	if choice  == '3':
 		savelocation()		
 		print()
-		
+
 	if choice  == '4':
-		
 		v = ui.load_view('slidertest')
 		slider_action(v['slider1'])
 		v.present('sheet')
 		v.wait_modal()
-		
+
 		#std = float(input('Stunde: '))
 		#min = float(input('Minute: '))
 		#sonne(std,min)
@@ -3471,17 +3474,17 @@ while 1 == 1:
 		#print ('Richtung:' + '	' + str(bq))
 		#print ('Höhe:' + '		' + str(bt))		
 		print()
-		
+
 	if choice  == '5':
 		aequinox()
-		
+
 		a1bak = a1
 		a2bak = a2
-		
+
 		a1 = springday
 		a2 = 3
 		springwotag = wochentag()
-		
+
 		a1 = summerday
 		a2 = 6
 		summerwotag = wochentag()
@@ -3489,37 +3492,33 @@ while 1 == 1:
 		a1 = autumnday
 		a2 = 9
 		autumnwotag = wochentag()
-		
+
 		a1 = winterday
 		a2 = 12
 		winterwotag = wochentag()
-		
+
 		a1 = a1bak
 		a2 = a2bak
-		
+
 		print()
 		print('Seasons:')
 		print('--------')
-		print('Beginning of spring:	' + springwotag + ', ' + str(a3) + '-03-' + str(springday))
-		print('Beginning of summer: 	' + summerwotag + ', ' + str(a3) + '-06-' + str(summerday))
-		print('Beginning of autumn:	' + autumnwotag + ', ' + str(a3) + '-09-' + str(autumnday))
-		print('Beginning of winter:	' + winterwotag + ', ' + str(a3) + '-12-' + str(winterday))
-		print()
+		print(f'Beginning of spring:	{springwotag}, {a3}-03-{springday}')
+		print(f'Beginning of summer: 	{summerwotag}, {a3}-06-{summerday}')
+		print(f'Beginning of autumn:	{autumnwotag}, {a3}-09-{autumnday}')
+		print(f'Beginning of winter:	{winterwotag}, {a3}-12-{winterday}\n')
 		
 		print('DST Switch Time:')
 		print('----------------')
 		checkdststatus()
 		print()
-		
+
 	if choice  == '6':
 		mainprogram()
 		
-	#if choice  == '7':	
+	#if choice  == '7':
 	#	button4_tapped('sathoehe')
-		
-	if choice  == '7':
-		print()
-		print('Quit')
-		exit()
 
-		
+	if choice  == '7':
+		print('\nQuit')
+		exit()
