@@ -12,7 +12,7 @@ jobs:
                          flake8-comprehensions isort mypy pytest pyupgrade safety
       - run: bandit --recursive --skip B110,B310,B311 .
       - run: black --check . || true
-      - run: codespell --ignore-words-list="als,finde,ist,objekt,produkt,wan" --skip="*.json"
+      - run: codespell --ignore-words-list="als,finde,ist,objekt,oder,produkt,wan" --skip="*.json"
       - run: flake8 . --count --select=C9,E9,F63,F7,F82 --max-complexity=66
                       --max-line-length=553--show-source --statistics
       - run: flake8 . --count --exit-zero --max-complexity=10 --max-line-length=88
