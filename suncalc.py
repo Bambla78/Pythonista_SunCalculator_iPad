@@ -1,46 +1,68 @@
 #!python3
 
 from __future__ import print_function
-from odf.opendocument import OpenDocumentText
-from odf.style import Style, TextProperties, ParagraphProperties, ListLevelProperties, FontFace, TableCellProperties
-from odf.text import P, H, A, S, Section, List, ListItem, ListStyle, LineBreak, ListLevelStyleBullet, ListLevelStyleNumber, ListLevelStyleBullet, Span
-from odf.text import Note, NoteBody, NoteCitation
-from odf.office import FontFaceDecls
-from odf.table import Table, TableColumn, TableRow, TableCell
-from odf.style import Style, GraphicProperties, TabStop, TabStops
-from odf import teletype
 
-from math import *
-import time
-from PIL import Image
-from datetime import timedelta
-from datetime import timezone
-import pytz
-import math
 import datetime
-import location
+import json
+import math
+import os
 import time
-import numpy as np
-import photos
+import urllib.parse
+import urllib.request
+from calendar import monthrange
+from datetime import timedelta, timezone
+from io import BytesIO
+from math import *
+from pathlib import Path
+from random import random, randrange
+
 import appex
-import ui
-import dialogs
-from random import randrange
-from random import random
-from pylab import *
-import console
 import arrow
 import clipboard
-import urllib.request
-import urllib.parse
-import requests
-import json
-from timezonefinder import TimezoneFinder
-from io import BytesIO
-import os
-from pathlib import Path
-from calendar import monthrange
+import console
+import dialogs
+import location
+import numpy as np
 import objc_util
+import photos
+import pytz
+import requests
+import ui
+from odf import teletype
+from odf.office import FontFaceDecls
+from odf.opendocument import OpenDocumentText
+from odf.style import (
+    FontFace,
+    GraphicProperties,
+    ListLevelProperties,
+    ParagraphProperties,
+    Style,
+    TableCellProperties,
+    TabStop,
+    TabStops,
+    TextProperties,
+)
+from odf.table import Table, TableCell, TableColumn, TableRow
+from odf.text import (
+    A,
+    H,
+    LineBreak,
+    List,
+    ListItem,
+    ListLevelStyleBullet,
+    ListLevelStyleNumber,
+    ListStyle,
+    Note,
+    NoteBody,
+    NoteCitation,
+    P,
+    S,
+    Section,
+    Span,
+)
+from PIL import Image
+from pylab import *
+from timezonefinder import TimezoneFinder
 
 #from odf import style as odfstyle
 
