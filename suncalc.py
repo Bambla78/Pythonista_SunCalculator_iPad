@@ -2136,6 +2136,7 @@ def createpdf():
 	#import time
 	import cloudmersive_convert_api_client
 	from cloudmersive_convert_api_client.rest import ApiException
+
 	#from pprint import pprint
 	# Configure API key authorization: Apikey
 	
@@ -3389,7 +3390,7 @@ def mainprogram():
 		img_path = 'nosat.jpg';
 
 	from odf.draw import Frame, Image
-	
+
 	#if aktuellesdatum == 0:
 	if printmoonstats == 0:
 
