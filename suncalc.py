@@ -17,7 +17,6 @@ from pathlib import Path
 from random import random, randrange
 
 import appex
-import arrow
 import clipboard
 import console
 import dialogs
@@ -63,6 +62,8 @@ from odf.text import (
 from PIL import Image
 from pylab import *
 from timezonefinder import TimezoneFinder
+
+import arrow
 
 #from odf import style as odfstyle
 
