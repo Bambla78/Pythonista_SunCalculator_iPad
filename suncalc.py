@@ -1,69 +1,46 @@
 #!python3
 
 from __future__ import print_function
-
-import datetime
-import json
-import math
-import os
-import time
-import urllib.parse
-import urllib.request
-from calendar import monthrange
-from datetime import timedelta, timezone
-from io import BytesIO
-from math import *
-from pathlib import Path
-from random import random, randrange
-
-import appex
-import clipboard
-import console
-import dialogs
-import location
-import numpy as np
-import objc_util
-import photos
-import pytz
-import requests
-import ui
-from odf import teletype
-from odf.office import FontFaceDecls
 from odf.opendocument import OpenDocumentText
-from odf.style import (
-    FontFace,
-    GraphicProperties,
-    ListLevelProperties,
-    ParagraphProperties,
-    Style,
-    TableCellProperties,
-    TabStop,
-    TabStops,
-    TextProperties,
-)
-from odf.table import Table, TableCell, TableColumn, TableRow
-from odf.text import (
-    A,
-    H,
-    LineBreak,
-    List,
-    ListItem,
-    ListLevelStyleBullet,
-    ListLevelStyleNumber,
-    ListStyle,
-    Note,
-    NoteBody,
-    NoteCitation,
-    P,
-    S,
-    Section,
-    Span,
-)
-from PIL import Image
-from pylab import *
-from timezonefinder import TimezoneFinder
+from odf.style import Style, TextProperties, ParagraphProperties, ListLevelProperties, FontFace, TableCellProperties
+from odf.text import P, H, A, S, Section, List, ListItem, ListStyle, LineBreak, ListLevelStyleBullet, ListLevelStyleNumber, ListLevelStyleBullet, Span
+from odf.text import Note, NoteBody, NoteCitation
+from odf.office import FontFaceDecls
+from odf.table import Table, TableColumn, TableRow, TableCell
+from odf.style import Style, GraphicProperties, TabStop, TabStops
+from odf import teletype
 
+from math import *
+import time
+from PIL import Image
+from datetime import timedelta
+from datetime import timezone
+import pytz
+import math
+import datetime
+import location
+import time
+import numpy as np
+import photos
+import appex
+import ui
+import dialogs
+from random import randrange
+from random import random
+from pylab import *
+import console
 import arrow
+import clipboard
+import urllib.request
+import urllib.parse
+import requests
+import json
+from timezonefinder import TimezoneFinder
+from io import BytesIO
+import os
+from pathlib import Path
+from calendar import monthrange
+import objc_util
 
 #from odf import style as odfstyle
 
@@ -540,7 +517,7 @@ tzalias = [
 
 ]
 
-wochentage_kuerzel = ["So.", "Mo.", "Di.", "Mi.", "Do.", "Fr.", "Sa.", "So."]
+wochentage_kuerzel = ["Su.", "Mo.", "Tu.", "We.", "Th.", "Fr.", "Sa.", "Su."]
 
 #textfield_did_change Alternative einbauen
 
@@ -660,13 +637,15 @@ def checkdststatus():
 	selected_year = a3
 	zeitwert = getzeitwert(selected_year)
 
-	if len(zeitwert) < 2:
+	if zeitwert == [] or len(zeitwert) == 1:
 		zeitwert = getzeitwert(2020)
 		
 		try:
 			d0 = (zeitwert[0].weekday())
 		except:
-			print('\nStandard time is used throughout whole year.\n')
+			print()
+			print('Standard time is used throughout whole year.')
+			print()
 			return
 			
 		d1 = (zeitwert[1].weekday())
@@ -2135,7 +2114,6 @@ def createpdf():
 	#import time
 	import cloudmersive_convert_api_client
 	from cloudmersive_convert_api_client.rest import ApiException
-
 	#from pprint import pprint
 	# Configure API key authorization: Apikey
 	
@@ -3389,7 +3367,7 @@ def mainprogram():
 		img_path = 'nosat.jpg';
 
 	from odf.draw import Frame, Image
-
+	
 	#if aktuellesdatum == 0:
 	if printmoonstats == 0:
 
@@ -3448,49 +3426,44 @@ mainprogram()
 while reset == 1:
 	mainprogram()
 
-prompt = """PLEASE INPUT ON KEYBOARD:
-
-1.	Save report
-2.	Open recent report PDF
-3.	Save location
-4.	Sun hour calculator
-5.	Seasons and DST switch time
-6.	Choose new location
-7.	Quit
-""" + '\n '
-while True:
-
+while 1 == 1:
+	
 	while reset == 1:
 		mainprogram()
-
-	choice = input(prompt)
-	while choice not in ('1', '2', '3', '4', '5', '6', '7'):
-		print('\nInvalid input.\n')
-		choice = input(prompt)
-
+		
+	choice = input('PLEASE INPUT ON KEYBOARD:\n\n1.	Save report\n2.	Open recent report PDF\n3.	Save location\n4.	Sun hour calculator\n5.	Seasons and DST switch time\n6.	Choose new location\n7.	Quit\n\n ')
+	
+	while choice != '1' and choice != '2' and choice != '3' and choice != '4' and choice != '5' and choice != '6' and choice != '7':
+		print()
+		print('Invalid input.')
+		print()
+		choice = input('PLEASE INPUT ON KEYBOARD:\n\n1.	Save report\n2.	Open recent report PDF\n3.	Save location\n4.	Sun hour calculator\n5.	Seasons and DST switch time\n6.	Choose new location\n7.	Quit\n\n ')
+		
 	if choice  == '1':
 		savereport()	
 		print()
-
+		
 	if choice == '2':
 		my_file = Path("Sunreport.pdf")
 		if my_file.is_file():
-			outfile_path = os.path.abspath(my_file.stem)
+			f = 'Sunreport.pdf'
+			outfile_path = os.path.abspath(f)
 			console.quicklook(outfile_path)
 		else:
 			dialogs.hud_alert('No report PDF available.', 'error', 1.8)
 		print()
-
+		
 	if choice  == '3':
 		savelocation()		
 		print()
-
+		
 	if choice  == '4':
+		
 		v = ui.load_view('slidertest')
 		slider_action(v['slider1'])
 		v.present('sheet')
 		v.wait_modal()
-
+		
 		#std = float(input('Stunde: '))
 		#min = float(input('Minute: '))
 		#sonne(std,min)
@@ -3498,17 +3471,17 @@ while True:
 		#print ('Richtung:' + '	' + str(bq))
 		#print ('Höhe:' + '		' + str(bt))		
 		print()
-
+		
 	if choice  == '5':
 		aequinox()
-
+		
 		a1bak = a1
 		a2bak = a2
-
+		
 		a1 = springday
 		a2 = 3
 		springwotag = wochentag()
-
+		
 		a1 = summerday
 		a2 = 6
 		summerwotag = wochentag()
@@ -3516,33 +3489,37 @@ while True:
 		a1 = autumnday
 		a2 = 9
 		autumnwotag = wochentag()
-
+		
 		a1 = winterday
 		a2 = 12
 		winterwotag = wochentag()
-
+		
 		a1 = a1bak
 		a2 = a2bak
-
+		
 		print()
 		print('Seasons:')
 		print('--------')
-		print(f'Beginning of spring:	{springwotag}, {a3}-03-{springday}')
-		print(f'Beginning of summer: 	{summerwotag}, {a3}-06-{summerday}')
-		print(f'Beginning of autumn:	{autumnwotag}, {a3}-09-{autumnday}')
-		print(f'Beginning of winter:	{winterwotag}, {a3}-12-{winterday}\n')
+		print('Beginning of spring:	' + springwotag + ', ' + str(a3) + '-03-' + str(springday))
+		print('Beginning of summer: 	' + summerwotag + ', ' + str(a3) + '-06-' + str(summerday))
+		print('Beginning of autumn:	' + autumnwotag + ', ' + str(a3) + '-09-' + str(autumnday))
+		print('Beginning of winter:	' + winterwotag + ', ' + str(a3) + '-12-' + str(winterday))
+		print()
 		
 		print('DST Switch Time:')
 		print('----------------')
 		checkdststatus()
 		print()
-
+		
 	if choice  == '6':
 		mainprogram()
 		
-	#if choice  == '7':
+	#if choice  == '7':	
 	#	button4_tapped('sathoehe')
-
+		
 	if choice  == '7':
-		print('\nQuit')
+		print()
+		print('Quit')
 		exit()
+
+		
