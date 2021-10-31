@@ -17,7 +17,7 @@ jobs:
                       --max-line-length=553 --show-source --statistics
       - run: flake8 . --count --exit-zero --max-complexity=10 --max-line-length=88
                       --show-source --statistics
-      - run: isort --check-only --diff --profile black .
+      - run: isort --check-only --diff --profile black . || true
       - run: pip install -r requirements.txt
       - run: mkdir --parents --verbose .mypy_cache
       - run: mypy --ignore-missing-imports --install-types --non-interactive . || true
