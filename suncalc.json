@@ -1,0 +1,164 @@
+[
+  {
+    "nodes" : [
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 118}, {788, 476}}",
+        "class" : "TableView",
+        "attributes" : {
+          "uuid" : "F80D6EE8-5B5B-4F29-8DF0-EE008DD000E2",
+          "editing" : false,
+          "background_color" : "RGBA(1.0, 1.0, 1.0, 1.0)",
+          "frame" : "{{20, 20}, {200, 200}}",
+          "data_source_items" : "Row 1\nRow 2\nRow 3",
+          "data_source_number_of_lines" : 1,
+          "data_source_delete_enabled" : true,
+          "data_source_font_size" : 18,
+          "row_height" : 44,
+          "class" : "TableView",
+          "name" : "tableview1",
+          "flex" : "WH"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{714, 6}, {80, 48}}",
+        "class" : "Button",
+        "attributes" : {
+          "action" : "button_tapped",
+          "frame" : "{{80, 104}, {80, 32}}",
+          "title" : "New",
+          "uuid" : "86620EA7-F8EA-4CA6-8312-EE9D0A5C6580",
+          "class" : "Button",
+          "name" : "button",
+          "font_size" : 15
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{626, 6}, {80, 48}}",
+        "class" : "Button",
+        "attributes" : {
+          "action" : "button1_tapped",
+          "frame" : "{{160, 284}, {80, 32}}",
+          "title" : "Change",
+          "uuid" : "377EF0CA-A6EF-4EB6-9B24-F83FA3B0C847",
+          "class" : "Button",
+          "name" : "button1",
+          "font_size" : 15
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 6}, {80, 48}}",
+        "class" : "Button",
+        "attributes" : {
+          "action" : "button2_tapped",
+          "frame" : "{{160, 284}, {80, 32}}",
+          "title" : "Start",
+          "uuid" : "868B7CF8-FD39-4C8F-BD30-4ACD8DDD6522",
+          "font_bold" : true,
+          "class" : "Button",
+          "name" : "button2",
+          "font_size" : 15
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{274, 6}, {80, 48}}",
+        "class" : "Button",
+        "attributes" : {
+          "action" : "button3_tapped",
+          "frame" : "{{360, 284}, {80, 32}}",
+          "title" : "App-Info",
+          "uuid" : "D97C15DE-EDCB-4996-A5A6-77EC825E8738",
+          "class" : "Button",
+          "name" : "button3",
+          "font_size" : 15
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{362, 6}, {177, 48}}",
+        "class" : "Button",
+        "attributes" : {
+          "action" : "button4_tapped",
+          "frame" : "{{360, 284}, {80, 32}}",
+          "title" : "Report Settings",
+          "uuid" : "0C4F5849-6D5C-4E42-B8C7-1EAE52E4DF47",
+          "class" : "Button",
+          "name" : "button4",
+          "font_size" : 15
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{36, 62}, {36, 36}}",
+        "class" : "ImageView",
+        "attributes" : {
+          "frame" : "{{350, 250}, {100, 100}}",
+          "image_name" : "iob:ios7_search_256",
+          "class" : "ImageView",
+          "name" : "imageview1",
+          "uuid" : "7CCA3372-D2C6-4B91-87A9-A9B8CB85795F"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{80, 62}, {714, 36}}",
+        "class" : "TextField",
+        "attributes" : {
+          "uuid" : "69AC3233-B16D-45B5-855A-E975347273E1",
+          "corner_radius" : 1,
+          "frame" : "{{300, 284}, {200, 32}}",
+          "border_width" : 1,
+          "action" : "",
+          "alignment" : "left",
+          "autocorrection_type" : "no",
+          "text" : "",
+          "placeholder" : "Search saved locations..",
+          "font_name" : "<System>",
+          "spellchecking_type" : "no",
+          "class" : "TextField",
+          "name" : "textfield1",
+          "font_size" : 17
+        },
+        "selected" : false
+      }
+    ],
+    "frame" : "{{0, 0}, {800, 600}}",
+    "class" : "View",
+    "attributes" : {
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "enabled" : true,
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "name" : "Choose location",
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "flex" : ""
+    },
+    "selected" : false
+  }
+]
